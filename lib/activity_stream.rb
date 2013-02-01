@@ -1,3 +1,5 @@
+require "activity_stream/version"
+
 module ActivityStream
   class Context
     attr_reader :attributes
