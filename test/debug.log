@@ -1,0 +1,60 @@
+# Logfile created on Fri Feb 01 15:35:50 +1000 2013 by logger.rb
+  [4;36;1mSQL (10.0ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "firstname" varchar(255), "lastname" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message" varchar(255), "person_id" integer) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message" varchar(255), "person_id" integer, "post_id" integer) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "activities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "verb" varchar(24) NOT NULL, "actor_id" integer, "actor_type" varchar(255), "object_id" integer, "object_type" varchar(255), "indirect_object_id" integer, "indirect_object_type" varchar(255), "context" varchar(32), "timestamp" datetime NOT NULL) [0m
+  [4;36;1mActivity Delete all (0.1ms)[0m   [0;1mDELETE FROM "activities" WHERE 1=1[0m
+  [4;35;1mPerson Load (0.1ms)[0m   [0mSELECT * FROM "people" ORDER BY people.id DESC LIMIT 1[0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" LIMIT 1[0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" ORDER BY posts.id DESC LIMIT 1[0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("post_id", "person_id", "message") VALUES(1, NULL, 'testing explicit indirect')[0m
+  [4;35;1mActivity Create (0.1ms)[0m   [0mINSERT INTO "activities" ("verb", "indirect_object_type", "indirect_object_id", "timestamp", "actor_id", "actor_type", "context", "object_id", "object_type") VALUES('create', 'Post', 2, '2013-02-01 15:37:48', 2, 'Person', NULL, 4, 'Comment')[0m
+  [4;36;1mActivity Load (0.2ms)[0m   [0;1mSELECT * FROM "activities" ORDER BY timestamp DESC LIMIT 1[0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 2) [0m
+  [4;36;1mActivity Delete all (0.1ms)[0m   [0;1mDELETE FROM "activities" WHERE 1=1[0m
+  [4;35;1mPerson Load (0.1ms)[0m   [0mSELECT * FROM "people" ORDER BY people.id DESC LIMIT 1[0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" LIMIT 1[0m
+  [4;35;1mComment Create (0.0ms)[0m   [0mINSERT INTO "comments" ("post_id", "person_id", "message") VALUES(1, NULL, 'testing indirect object')[0m
+  [4;36;1mActivity Create (0.1ms)[0m   [0;1mINSERT INTO "activities" ("verb", "indirect_object_type", "indirect_object_id", "timestamp", "actor_id", "actor_type", "context", "object_id", "object_type") VALUES('create', 'Post', 1, '2013-02-01 15:37:48', 2, 'Person', NULL, 5, 'Comment')[0m
+  [4;35;1mActivity Load (0.1ms)[0m   [0mSELECT * FROM "activities" ORDER BY timestamp DESC LIMIT 1[0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 1) [0m
+  [4;35;1mPerson Load (0.1ms)[0m   [0mSELECT * FROM "people" LIMIT 1[0m
+  [4;36;1mActivity Delete all (0.0ms)[0m   [0;1mDELETE FROM "activities" WHERE 1=1[0m
+  [4;35;1mComment Create (0.0ms)[0m   [0mINSERT INTO "comments" ("post_id", "person_id", "message") VALUES(NULL, 1, 'I''m going to leave an activity')[0m
+  [4;36;1mActivity Create (0.1ms)[0m   [0;1mINSERT INTO "activities" ("verb", "indirect_object_type", "indirect_object_id", "timestamp", "actor_id", "actor_type", "context", "object_id", "object_type") VALUES('create', 'Person', 1, '2013-02-01 15:37:48', 1, 'Person', NULL, 6, 'Comment')[0m
+  [4;35;1mActivity Load (0.1ms)[0m   [0mSELECT * FROM "activities" ORDER BY timestamp DESC LIMIT 1[0m
+  [4;36;1mPerson Load (0.1ms)[0m   [0;1mSELECT * FROM "people" WHERE ("people"."id" = 1) [0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT * FROM "comments" WHERE ("comments"."id" = 6) [0m
+  [4;36;1mComment Load (0.1ms)[0m   [0;1mSELECT * FROM "comments" LIMIT 1[0m
+  [4;35;1mActivity Load (0.1ms)[0m   [0mSELECT * FROM "activities" WHERE ("activities".object_id = 1 AND "activities".object_type = 'Comment') ORDER BY timestamp DESC[0m
+  [4;36;1mPerson Load (0.1ms)[0m   [0;1mSELECT * FROM "people" LIMIT 1[0m
