@@ -4,9 +4,7 @@ Activity Stream will keep trace of your activity on the db.
 
 This Gem is sutable for whom have installed [the plugin activity_stream by evilmarty](https://github.com/evilmarty/activity_stream) and want to use it with a Gem.
 
-### Gotchas before you start
-
-We're not currently testing the startup (migrations etc) and we're concentrating in having it working in our projects, so it won't be a full maintenance. Sorry. :) Feel free to fork it and amend it yourself or write some tests for it. We'll be happy to pull your efforts. 
+All tests are passing.
 
 
 ## Installation
@@ -28,6 +26,8 @@ Or install it yourself as:
 See below original readme.
 
 ## Contributing
+
+Contributions are welcome, but be aware that we're not the original developers of the code and our own part was to move the existing code into a Gem.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
