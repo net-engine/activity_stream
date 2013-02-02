@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'activity_stream/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "activity_stream"
+  gem.name          = "evilmarty_activity_stream"
   gem.version       = ActivityStream::VERSION
   gem.authors       = ["ecoologic"]
   gem.email         = ["erik@netengine.com.au"]
