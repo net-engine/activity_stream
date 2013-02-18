@@ -11,7 +11,7 @@ All tests are passing.
 
 Add this line to your application's Gemfile:
 
-    gem 'activity_stream'
+    gem 'evilmarty_activity_stream'
 
 And then execute:
 
